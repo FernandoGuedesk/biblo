@@ -32,6 +32,7 @@ public class Historico {
 		result = prime * result + (int) (idHistorico ^ (idHistorico >>> 32));
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
