@@ -3,23 +3,23 @@ package br.dev.nando.biblo.api.model;
 public class Endereco {
 	
 	private String cep;
-	private String lograduro;
+	private String logradouro;
 	private String bairro;
 	private String cidade;
 	private String uf;
 	private String complemento;
-	
+		
 	public String getCep() {
 		return cep;
 	}
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	public String getLograduro() {
-		return lograduro;
+	public String getLogradouro() {
+		return logradouro;
 	}
-	public void setLograduro(String lograduro) {
-		this.lograduro = lograduro;
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 	public String getBairro() {
 		return bairro;
@@ -46,8 +46,4 @@ public class Endereco {
 		this.complemento = complemento;
 	}
 	
-	
-	
-	
-
 }

@@ -1,5 +1,8 @@
 package br.dev.nando.biblo.api.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +25,7 @@ public class Usuario {
 	
 	private String telefone;
 	
-	
+	private List<Endereco> enderecos = new ArrayList<>();
 	
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -53,6 +56,13 @@ public class Usuario {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+		
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 	@Override
 	public int hashCode() {
