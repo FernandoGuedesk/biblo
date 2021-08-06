@@ -1,12 +1,24 @@
 package br.dev.nando.biblo.api.model;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable @Access(AccessType.FIELD)
 public class Endereco {
 	
+	@Column(name = "cep")
 	private String cep;
+	@Column(name = "logradouro")
 	private String logradouro;
+	@Column(name = "bairro")
 	private String bairro;
+	@Column(name = "cidade")
 	private String cidade;
+	@Column(name = "uf")
 	private String uf;
+	@Column(name = "complemento")
 	private String complemento;
 		
 	public String getCep() {

@@ -1,31 +1,33 @@
 package br.dev.nando.biblo.api.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="usuario")
 public class Usuario {
 	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idusuario")
 	private Long idUsuario;
-	
+	@Column
 	private String nome;
-	
+	@Column
 	private String email;
-	
+	@Column
 	private String tipo;
-	
+	@Column
 	private String telefone;
 	
-	private List<Endereco> enderecos = new ArrayList<>();
+	@Embedded
+    private Endereco endereco;
+
 	
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -58,12 +60,13 @@ public class Usuario {
 		this.telefone = telefone;
 	}
 		
-	public List<Endereco> getEnderecos() {
-		return enderecos;
+	public Endereco getEndereco() {
+		return endereco;
 	}
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
