@@ -1,15 +1,35 @@
 package br.dev.nando.biblo.api.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity 
+@Table(name="livros")
 public class Livros {
 	
-	private long idLivros;
+	@Id()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idlivros")
+	private Long idLivros;
+	@Column
 	private String titulo;
+	@Column
 	private String autor;
+	@Column
 	private String editora;
+	@Column
 	private String cidade;
+	@Column
 	private String ano;
+	@Column
 	private String edicao;
+	@Column
 	private String isbn;
+	@Column
 	private String estatusEmprestimo;
 	
 	
