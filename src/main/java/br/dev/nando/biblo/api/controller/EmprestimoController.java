@@ -19,6 +19,7 @@ public class EmprestimoController {
 	@Autowired
 	EmprestimoRepository repositorio;
 	
+	@GetMapping
 	public List<Emprestimo> listar() {
 		return repositorio.findAll();
 	}

@@ -19,7 +19,7 @@ public class GeneroController {
 	@Autowired
 	GeneroRepository repositorio;
 	
-	
+	@GetMapping
 	public List<Genero> listar() {
 		return repositorio.findAll();
 	}

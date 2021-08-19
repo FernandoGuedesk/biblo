@@ -19,13 +19,13 @@ public class LeitorController {
 	@Autowired
 	LeitorRepository repositorio;
 	
-	
+	@GetMapping
 	public List<Leitor> listar() {
 		return repositorio.findAll();
 	}
 	@GetMapping("/{idLeitor}")
-	public Optional<Leitor> listarUmLeitor(@PathVariable Long idLitor) {
-		Optional<Leitor> leitorEncontrado = repositorio.findById(idLitor);
+	public Optional<Leitor> listarUmLeitor(@PathVariable Long idLeitor) {
+		Optional<Leitor> leitorEncontrado = repositorio.findById(idLeitor);
 		return leitorEncontrado;
 	}
 
