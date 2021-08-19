@@ -18,7 +18,6 @@ public class BibliotecarioController {
 	
 	@Autowired
 	BibliotecarioRepository repositorio;
-	private Long idBibliotecario;
 	
 	@GetMapping
 	public List<Bibliotecario> listar() {
@@ -26,7 +25,7 @@ public class BibliotecarioController {
 		
 	}
 	@GetMapping("/{idBibliotecario}")
-	public Optional<Bibliotecario> listarUmBibliotecario(@PathVariable Long isBibliotecario) {
+	public Optional<Bibliotecario> listarUmBibliotecario(@PathVariable Long idBibliotecario) {
 		Optional<Bibliotecario> bibliotecarioEncontrado = repositorio.findById(idBibliotecario);
 			return bibliotecarioEncontrado;
 	}
