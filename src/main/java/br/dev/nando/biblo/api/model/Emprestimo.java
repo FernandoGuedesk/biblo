@@ -1,15 +1,36 @@
 package br.dev.nando.biblo.api.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="emprestimo")
 public class Emprestimo {
 	
-	private long idEmprestimo;
+	@Id()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idemprestimo")
+	private Long idEmprestimo;
+	@Column
 	private String situacao;
+	@Column
 	private int dt_Emprestimo;
+	@Column
 	private int dt_Devolucao;
+	@ManyToOne
 	private Bibliotecario bibliotecario;
+	@ManyToOne
 	private Leitor leitor;
+	
+	
 	public long getIdEmprestimo() {
 		return idEmprestimo;
+		
 	}
 	public void setIdEmprestimo(long idEmprestimo) {
 		this.idEmprestimo = idEmprestimo;

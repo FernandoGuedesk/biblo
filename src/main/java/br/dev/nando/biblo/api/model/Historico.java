@@ -1,10 +1,26 @@
 package br.dev.nando.biblo.api.model;
 
+import java.time.OffsetDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="historico")
 public class Historico {
 	
-	private long idHistorico;
-	private int dataEmprestimo;
-	private int dataDevolucao;
+	@Id()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idhistorico")
+	private Long idHistorico;
+	@Column 
+	private OffsetDateTime dataEmprestimo;
+	@Column
+	private OffsetDateTime dataDevolucao;
 	
 	
 	public long getIdHistorico() {
@@ -13,16 +29,16 @@ public class Historico {
 	public void setIdHistorico(long idHistorico) {
 		this.idHistorico = idHistorico;
 	}
-	public int getDataEmprestimo() {
+	public OffsetDateTime getDataEmprestimo() {
 		return dataEmprestimo;
 	}
-	public void setDataEmprestimo(int dataEmprestimo) {
+	public void setDataEmprestimo(OffsetDateTime dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
 	}
-	public int getDataDevolucao() {
+	public OffsetDateTime getDataDevolucao() {
 		return dataDevolucao;
 	}
-	public void setDataDevolucao(int dataDevolucao) {
+	public void setDataDevolucao(OffsetDateTime dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 	@Override

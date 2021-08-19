@@ -1,9 +1,24 @@
 package br.dev.nando.biblo.api.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="leitor")
 public class Leitor {
 	
+	@Id()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idleitor")
 	private Long idLeitor;
+	@Column
 	private String status;
+	@ManyToOne
 	private Usuario usuario;
 	
 	
