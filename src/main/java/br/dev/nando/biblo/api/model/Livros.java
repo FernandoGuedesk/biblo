@@ -29,8 +29,8 @@ public class Livros {
 	private String edicao;
 	@Column
 	private String isbn;
-	@Column
-	private String estatusEmprestimo;
+	@Column(name="status_emprestimo")
+	private String statusEmprestimo;
 	
 	
 	public long getIdLivros() {
@@ -81,11 +81,11 @@ public class Livros {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	public String getEstatusEmprestimo() {
-		return estatusEmprestimo;
+	public String getStatusEmprestimo() {
+		return statusEmprestimo;
 	}
-	public void setEstatusEmprestimo(String estatusEmprestimo) {
-		this.estatusEmprestimo = estatusEmprestimo;
+	public void setStatusEmprestimo(String statusEmprestimo) {
+		this.statusEmprestimo = statusEmprestimo;
 	}
 	
 	
