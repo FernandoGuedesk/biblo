@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity 
@@ -31,6 +32,8 @@ public class Livros {
 	private String isbn;
 	@Column(name="status_emprestimo")
 	private String statusEmprestimo;
+	@OneToMany
+	private Genero genero;
 	
 	
 	public long getIdLivros() {
@@ -86,6 +89,13 @@ public class Livros {
 	}
 	public void setStatusEmprestimo(String statusEmprestimo) {
 		this.statusEmprestimo = statusEmprestimo;
+	}
+	
+	public Genero getGenero() {
+		return genero;
+	}
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 	
 	

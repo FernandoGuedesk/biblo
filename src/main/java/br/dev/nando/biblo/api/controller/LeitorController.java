@@ -13,7 +13,7 @@ import br.dev.nando.biblo.api.model.Leitor;
 import br.dev.nando.biblo.api.repository.LeitorRepository;
 
 @RestController
-@RequestMapping("/leitor")
+@RequestMapping("/leitores")
 public class LeitorController {
 	
 	@Autowired

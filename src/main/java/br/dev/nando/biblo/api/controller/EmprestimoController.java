@@ -13,7 +13,7 @@ import br.dev.nando.biblo.api.model.Emprestimo;
 import br.dev.nando.biblo.api.repository.EmprestimoRepository;
 
 @RestController
-@RequestMapping("/emprestimo")
+@RequestMapping("/emprestimos")
 public class EmprestimoController {
 
 	@Autowired

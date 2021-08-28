@@ -13,9 +13,9 @@ public class Genero {
 	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idgenero")
+	@Column(name = "id_genero")
 	private long idGenero;
-	@Column
+	@Column(name = "nome_genero")
 	private String nomeGenero;
 	@Column
 	public long getIdGenero() {

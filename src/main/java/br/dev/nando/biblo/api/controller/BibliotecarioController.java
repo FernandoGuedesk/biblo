@@ -13,7 +13,7 @@ import br.dev.nando.biblo.api.model.Bibliotecario;
 import br.dev.nando.biblo.api.repository.BibliotecarioRepository;
 
 @RestController
-@RequestMapping("/bibliotecario")
+@RequestMapping("/bibliotecarios")
 public class BibliotecarioController {
 	
 	@Autowired
