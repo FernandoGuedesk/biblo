@@ -1,10 +1,13 @@
 package br.dev.nando.biblo.api.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +20,10 @@ public class Genero {
 	private Long idGenero;
 	@Column(name = "nome_genero")
 	private String nomeGenero;
-	@Column
+	@ManyToMany()
+	  private List<Livros> livros;
+	
+	
 	public Long getIdGenero() {
 		return idGenero;
 	}
@@ -30,6 +36,14 @@ public class Genero {
 	public void setNomeGenero(String nomeGenero) {
 		this.nomeGenero = nomeGenero;
 	}
+	public List<Livros> getLivros() {
+		return livros;
+	}
+	public void setLivros(List<Livros> livros) {
+		this.livros = livros;
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
