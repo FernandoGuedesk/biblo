@@ -14,14 +14,14 @@ public class Genero {
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_genero")
-	private long idGenero;
+	private Long idGenero;
 	@Column(name = "nome_genero")
 	private String nomeGenero;
 	@Column
-	public long getIdGenero() {
+	public Long getIdGenero() {
 		return idGenero;
 	}
-	public void setIdGenero(long idGenero) {
+	public void setIdGenero(Long idGenero) {
 		this.idGenero = idGenero;
 	}
 	public String getNomeGenero() {

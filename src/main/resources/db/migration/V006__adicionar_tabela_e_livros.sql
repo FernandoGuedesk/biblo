@@ -14,7 +14,7 @@ CREATE TABLE `livros` (
   PRIMARY KEY (`idlivros`))
 ENGINE = InnoDB;
 
-INSERT INTO `livros` (`titulo`, `autor`, `editora`, `cidade`,`ano`, `edicao`, `isbn`, `statusEmprestimo`) VALUES ('Harry Potter', 'J. K. Rowling', 'Rocco', 'São Paulo', '1997', '2','8624365429901','disponível');
+INSERT INTO `livros` (`titulo`, `autor`, `editora`, `cidade`,`ano`, `edicao`, `isbn`, `statusEmprestimo`) VALUES ('Harry Potter', 'J. K. Rowling', 'Rocco', 'São Paulo', '1997', '2','8624365429901','emprestado');
 INSERT INTO `livros` (`titulo`, `autor`, `editora`, `cidade`,`ano`, `edicao`, `isbn`, `statusEmprestimo`) VALUES ('Song of Ice and Fire Series', 'George R.R. Martin', 'Leya Brasil', 'São Paulo', '2010', '2','9876554534987','disponível');
 INSERT INTO `livros` (`titulo`, `autor`, `editora`, `cidade`,`ano`, `edicao`, `isbn`, `statusEmprestimo`) VALUES ('Do Mil ao Milhão – Sem Cortar o Cafezinho', 'Thiago Nigro', 'HarperCollins', 'São Paulo', '2018', '2','1234365429901','disponível');
 INSERT INTO `livros` (`titulo`, `autor`, `editora`, `cidade`,`ano`, `edicao`, `isbn`, `statusEmprestimo`) VALUES ('Mulheres Que Correm Com Os Lobos', 'Clarissa Pinkola Estes', 'Rocco', 'São Paulo', '1992', '2','8624361234901','disponível');

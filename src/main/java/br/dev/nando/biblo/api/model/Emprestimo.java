@@ -1,11 +1,14 @@
 package br.dev.nando.biblo.api.model;
 
+import java.time.OffsetDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,14 +21,16 @@ public class Emprestimo {
 	private Long idEmprestimo;
 	@Column
 	private String situacao;
-	@Column
-	private int dt_Emprestimo;
-	@Column
-	private int dt_Devolucao;
+	@Column(name = "dt_emprestimo")
+	private OffsetDateTime dataEmprestimo;
+	@Column(name = "dt_devolucao")
+	private OffsetDateTime dataDevolucao;
 	@ManyToOne
 	private Bibliotecario bibliotecario;
 	@ManyToOne
 	private Leitor leitor;
+	@OneToOne
+	private Livros livros;
 	
 	
 	public long getIdEmprestimo() {
@@ -41,17 +46,17 @@ public class Emprestimo {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
-	public int getDt_Emprestimo() {
-		return dt_Emprestimo;
+	public OffsetDateTime getDt_Emprestimo() {
+		return dataEmprestimo;
 	}
-	public void setDt_Emprestimo(int dt_Emprestimo) {
-		this.dt_Emprestimo = dt_Emprestimo;
+	public void setDt_Emprestimo(OffsetDateTime dataEmprestimo) {
+		this.dataEmprestimo = dataEmprestimo;
 	}
-	public int getDt_Devolucao() {
-		return dt_Devolucao;
+	public OffsetDateTime getDt_Devolucao() {
+		return dataDevolucao;
 	}
-	public void setDt_Devolucao(int dt_Devolucao) {
-		this.dt_Devolucao = dt_Devolucao;
+	public void setDt_Devolucao(OffsetDateTime dataDevolucao) {
+		this.dataDevolucao = dataDevolucao;
 	}
 	public Bibliotecario getBibliotecario() {
 		return bibliotecario;
@@ -65,15 +70,17 @@ public class Emprestimo {
 	public void setLeitor(Leitor leitor) {
 		this.leitor = leitor;
 	}
+	public Livros getLivros() {
+		return livros;
+	}
+	public void setLivros(Livros livros) {
+		this.livros = livros;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + dt_Devolucao;
-		result = prime * result + dt_Emprestimo;
-		result = prime * result + (int) (idEmprestimo ^ (idEmprestimo >>> 32));
-		result = prime * result + ((leitor == null) ? 0 : leitor.hashCode());
-		result = prime * result + ((situacao == null) ? 0 : situacao.hashCode());
+		result = prime * result + ((idEmprestimo == null) ? 0 : idEmprestimo.hashCode());
 		return result;
 	}
 	@Override
@@ -85,24 +92,14 @@ public class Emprestimo {
 		if (getClass() != obj.getClass())
 			return false;
 		Emprestimo other = (Emprestimo) obj;
-		if (dt_Devolucao != other.dt_Devolucao)
-			return false;
-		if (dt_Emprestimo != other.dt_Emprestimo)
-			return false;
-		if (idEmprestimo != other.idEmprestimo)
-			return false;
-		if (leitor == null) {
-			if (other.leitor != null)
+		if (idEmprestimo == null) {
+			if (other.idEmprestimo != null)
 				return false;
-		} else if (!leitor.equals(other.leitor))
-			return false;
-		if (situacao == null) {
-			if (other.situacao != null)
-				return false;
-		} else if (!situacao.equals(other.situacao))
+		} else if (!idEmprestimo.equals(other.idEmprestimo))
 			return false;
 		return true;
 	}
+	
 	
 	
 
