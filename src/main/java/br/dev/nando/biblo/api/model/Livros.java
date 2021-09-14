@@ -1,10 +1,14 @@
 package br.dev.nando.biblo.api.model;
 
+import java.util.List;
+
+import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity 
@@ -31,12 +35,14 @@ public class Livros {
 	private String isbn;
 	@Column(name="status_emprestimo")
 	private String statusEmprestimo;
-	
+	@ManyToMany(mappedBy="livros", cascade = CascadeType.ALL)
+	private List<Genero> generos;
+ 	
 	
 	public long getIdLivros() {
 		return idLivros;
 	}
-	public void setIdLivros(long idLivros) {
+	public void setIdLivros(Long idLivros) {
 		this.idLivros = idLivros;
 	}
 	public String getTitulo() {
@@ -44,12 +50,6 @@ public class Livros {
 	}
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}
-	public String getAltor() {
-		return autor;
-	}
-	public void setAltor(String altor) {
-		this.autor = altor;
 	}
 	public String getEditora() {
 		return editora;
@@ -86,6 +86,18 @@ public class Livros {
 	}
 	public void setStatusEmprestimo(String statusEmprestimo) {
 		this.statusEmprestimo = statusEmprestimo;
+	}
+	public String getAutor() {
+		return autor;
+	}
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+	public List<Genero> getGeneros() {
+		return generos;
+	}
+	public void setGeneros(List<Genero> generos) {
+		this.generos = generos;
 	}
 	
 	

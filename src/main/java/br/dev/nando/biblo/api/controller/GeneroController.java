@@ -13,7 +13,7 @@ import br.dev.nando.biblo.api.model.Genero;
 import br.dev.nando.biblo.api.repository.GeneroRepository;
 
 @RestController
-@RequestMapping("/genero")
+@RequestMapping("/generos")
 public class GeneroController {
 	
 	@Autowired

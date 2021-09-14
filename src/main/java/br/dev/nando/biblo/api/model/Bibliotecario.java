@@ -14,7 +14,7 @@ public class Bibliotecario {
 	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idblibliotecario")
+	@Column(name = "idbibliotecario")
 	private Long idBibliotecario;
 	@Column
 	private String status;

@@ -13,7 +13,7 @@ import br.dev.nando.biblo.api.model.Historico;
 import br.dev.nando.biblo.api.repository.HistoricoRepository;
 
 @RestController
-@RequestMapping("/historico")
+@RequestMapping("/historicos")
 public class HistoricoController {
 	
 	@Autowired

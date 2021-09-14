@@ -1,10 +1,17 @@
 package br.dev.nando.biblo.api.model;
 
+
+import java.util.List;
+
+import javax.persistence.*;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,15 +20,21 @@ public class Genero {
 	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idgenero")
-	private long idGenero;
-	@Column
+	@Column(name = "id_genero")
+	private Long idGenero;
+	@Column(name = "nome_genero")
 	private String nomeGenero;
-	@Column
-	public long getIdGenero() {
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="livros_generos",
+	             joinColumns={@JoinColumn(name="livros_idlivros")},
+	             inverseJoinColumns={@JoinColumn(name="genero_id_genero")})
+	private List<Livros> livros;
+	
+	
+	public Long getIdGenero() {
 		return idGenero;
 	}
-	public void setIdGenero(long idGenero) {
+	public void setIdGenero(Long idGenero) {
 		this.idGenero = idGenero;
 	}
 	public String getNomeGenero() {
@@ -30,6 +43,14 @@ public class Genero {
 	public void setNomeGenero(String nomeGenero) {
 		this.nomeGenero = nomeGenero;
 	}
+	public List<Livros> getLivros() {
+		return livros;
+	}
+	public void setLivros(List<Livros> livros) {
+		this.livros = livros;
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
