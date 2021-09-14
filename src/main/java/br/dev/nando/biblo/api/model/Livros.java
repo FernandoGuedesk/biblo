@@ -2,6 +2,7 @@ package br.dev.nando.biblo.api.model;
 
 import java.util.List;
 
+import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,9 +35,9 @@ public class Livros {
 	private String isbn;
 	@Column(name="status_emprestimo")
 	private String statusEmprestimo;
-	@ManyToMany()
+	@ManyToMany(mappedBy="livros", cascade = CascadeType.ALL)
 	private List<Genero> generos;
-	
+ 	
 	
 	public long getIdLivros() {
 		return idLivros;

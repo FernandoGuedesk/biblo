@@ -1,12 +1,16 @@
 package br.dev.nando.biblo.api.model;
 
+
 import java.util.List;
 
+import javax.persistence.*;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -20,8 +24,11 @@ public class Genero {
 	private Long idGenero;
 	@Column(name = "nome_genero")
 	private String nomeGenero;
-	@ManyToMany()
-	  private List<Livros> livros;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="livros_generos",
+	             joinColumns={@JoinColumn(name="livros_idlivros")},
+	             inverseJoinColumns={@JoinColumn(name="genero_id_genero")})
+	private List<Livros> livros;
 	
 	
 	public Long getIdGenero() {
