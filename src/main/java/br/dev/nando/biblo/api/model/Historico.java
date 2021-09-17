@@ -15,12 +15,18 @@ public class Historico {
 	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idhistorico")
+	@Column(name = "id_historico")
 	private Long idHistorico;
-	@Column 
+	@Column(name = "dt_emprestimo")
 	private OffsetDateTime dataEmprestimo;
-	@Column
+	@Column(name = "dt_devolucao")
 	private OffsetDateTime dataDevolucao;
+	@Column(name = "idleitor")
+	private Long idLeitor;
+	@Column(name = "idbibliotecario")
+	private Long idBibliotecario;
+	@Column(name = "idlivro") 
+	private Long idLivro;
 	
 	
 	public long getIdHistorico() {
@@ -41,6 +47,25 @@ public class Historico {
 	public void setDataDevolucao(OffsetDateTime dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
+	public Long getIdLeitor() {
+		return idLeitor;
+	}
+	public void setIdLeitor(Long idLeitor) {
+		this.idLeitor = idLeitor;
+	}
+	public Long getIdBibliotecario() {
+		return idBibliotecario;
+	}
+	public void setIdBibliotecario(Long idBibliotecario) {
+		this.idBibliotecario = idBibliotecario;
+	}
+	public Long getIdLivro() {
+		return idLivro;
+	}
+	public void setIdLivro(Long idLivro) {
+		this.idLivro = idLivro;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
