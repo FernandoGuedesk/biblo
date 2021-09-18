@@ -11,21 +11,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.dev.nando.biblo.api.model.Usuario;
 import br.dev.nando.biblo.api.repository.UsuarioRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 
 @RestController
 @RequestMapping("/usuarios")
+@Api(value = "Usuários")
 public class UsuarioController {
 	
 	@Autowired
 	UsuarioRepository repositorio;
 	
+	@ApiOperation(value = "Lista todos os Usuários")
 	@GetMapping
 	public List<Usuario> listar() {
 		
 		return repositorio.findAll();
 		
 	}
+	
+	@ApiOperation(value = "Recupera um Usuário específico")
 	@GetMapping("/{idUsuario}")
 	public Optional<Usuario> listarUmUsuario(@PathVariable Long idUsuario) {
 		
