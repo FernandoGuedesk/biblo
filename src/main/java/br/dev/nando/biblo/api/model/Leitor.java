@@ -14,7 +14,7 @@ public class Leitor {
 	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idleitor")
+	@Column(name = "id_leitor")
 	private Long idLeitor;
 	@Column
 	private String status;

@@ -17,7 +17,7 @@ public class Emprestimo {
 	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idemprestimo")
+	@Column(name = "id_emprestimo")
 	private Long idEmprestimo;
 	@Column
 	private String situacao;
@@ -30,7 +30,7 @@ public class Emprestimo {
 	@ManyToOne
 	private Leitor leitor;
 	@OneToOne
-	private Livros livros;
+	private Livro livro;
 	
 	
 	public long getIdEmprestimo() {
@@ -70,11 +70,11 @@ public class Emprestimo {
 	public void setLeitor(Leitor leitor) {
 		this.leitor = leitor;
 	}
-	public Livros getLivros() {
-		return livros;
+	public Livro getlivro() {
+		return livro;
 	}
-	public void setLivros(Livros livros) {
-		this.livros = livros;
+	public void setlivro(Livro livro) {
+		this.livro = livro;
 	}
 	@Override
 	public int hashCode() {

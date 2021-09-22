@@ -3,9 +3,9 @@ package br.dev.nando.biblo.api.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.dev.nando.biblo.api.model.Livros;
+import br.dev.nando.biblo.api.model.Livro;
 
 @Repository
-public interface LivrosRepository extends JpaRepository<Livros, Long> {
+public interface LivroRepository extends JpaRepository<Livro, Long> {
 
 }

@@ -21,11 +21,11 @@ public class Historico {
 	private OffsetDateTime dataEmprestimo;
 	@Column(name = "dt_devolucao")
 	private OffsetDateTime dataDevolucao;
-	@Column(name = "idleitor")
+	@Column(name = "id_leitor")
 	private Long idLeitor;
-	@Column(name = "idbibliotecario")
+	@Column(name = "id_bibliotecario")
 	private Long idBibliotecario;
-	@Column(name = "idlivro") 
+	@Column(name = "id_livro") 
 	private Long idLivro;
 	
 	
