@@ -62,9 +62,9 @@ public class UsuarioController {
 	
 	@ApiOperation(value = "Edita um usuário especificado pelo seu id")
 	@PutMapping("/{idUsuario}")
-	public Usuario editar(@PathVariable Long idUsuario, @RequestBody Usuario novoUsuario) throws Exception {
+	public Usuario editar(@PathVariable Long idUsuario, @RequestBody Usuario usuarioModificado) throws Exception {
 		
-		return service.editarUsuario(idUsuario, novoUsuario);
+		return service.editarUsuario(idUsuario, usuarioModificado);
 			
 	}
 	

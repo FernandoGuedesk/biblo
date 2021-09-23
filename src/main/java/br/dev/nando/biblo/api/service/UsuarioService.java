@@ -12,20 +12,22 @@ public class UsuarioService {
 	@Autowired
 	UsuarioRepository repositorio;
 	
-	public Usuario editarUsuario(Long idUsuario, Usuario novoUsuario) {
-		
+	public Usuario editarUsuario(Long idUsuario, Usuario usuarioModificado) {
+		//recupera um id existen
 		return repositorio.findById(idUsuario)
+				//atribui o valor modificado no usuario antigo.
 				.map(usuario -> {
-					usuario.setNome(novoUsuario.getNome());
-					usuario.setTipo(novoUsuario.getTelefone());
-					usuario.setTipo(novoUsuario.getTipo());
-					usuario.setEmail(novoUsuario.getEmail());
-					usuario.setEndereco(novoUsuario.getEndereco());
+					usuario.setNome(usuarioModificado.getNome());
+					usuario.setTipo(usuarioModificado.getTelefone());
+					usuario.setTipo(usuarioModificado.getTipo());
+					usuario.setEmail(usuarioModificado.getEmail());
+					usuario.setEndereco(usuarioModificado.getEndereco());
+					//salva o usuario que recebeu a modificação.
 					return repositorio.save(usuario);
 				})
 				.orElseGet(() -> {
-					novoUsuario.setIdUsuario(idUsuario);
-			        return repositorio.save(novoUsuario);
+					usuarioModificado.setIdUsuario(idUsuario);
+			        return repositorio.save(usuarioModificado);
 			      });
 	}
 
