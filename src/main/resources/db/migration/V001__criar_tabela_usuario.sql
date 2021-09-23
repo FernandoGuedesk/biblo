@@ -1,10 +1,10 @@
 CREATE TABLE `usuario` (
-  `idusuario` INT NOT NULL AUTO_INCREMENT,
+  `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(60) NOT NULL,
   `tipo` VARCHAR(20) NOT NULL,
   `telefone` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idusuario`))
+  PRIMARY KEY (`id_usuario`))
 ENGINE = InnoDB;
 
 INSERT INTO `usuario` (`nome`, `tipo`, `telefone`, `email`) VALUES ('Fernando', 'adm', '999878987', 'fernando@id.com');

@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="genero")
 public class Genero {
@@ -24,11 +26,12 @@ public class Genero {
 	private Long idGenero;
 	@Column(name = "nome_genero")
 	private String nomeGenero;
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name="livros_generos",
-	             joinColumns={@JoinColumn(name="livros_idlivros")},
+	@JsonBackReference("genero")
+	@ManyToMany(fetch = FetchType.EAGER)
+	  @JoinTable(name="livro_has_genero",
+	             joinColumns={@JoinColumn(name="livro_id_livro")},
 	             inverseJoinColumns={@JoinColumn(name="genero_id_genero")})
-	private List<Livros> livros;
+	private List<Livro> livro;
 	
 	
 	public Long getIdGenero() {
@@ -43,14 +46,12 @@ public class Genero {
 	public void setNomeGenero(String nomeGenero) {
 		this.nomeGenero = nomeGenero;
 	}
-	public List<Livros> getLivros() {
-		return livros;
+	public List<Livro> getLivro() {
+		return livro;
 	}
-	public void setLivros(List<Livros> livros) {
-		this.livros = livros;
+	public void setLivro(List<Livro> livro) {
+		this.livro = livro;
 	}
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

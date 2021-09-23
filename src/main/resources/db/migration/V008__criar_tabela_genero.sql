@@ -1,7 +1,8 @@
 CREATE TABLE `genero` (
   `id_genero` INT NOT NULL AUTO_INCREMENT,
-  `nome_genero` VARCHAR(45) NOT NULL,
-   PRIMARY KEY (`id_genero`))
+  `nome_genero` VARCHAR(45) NOT NULL,   
+  PRIMARY KEY (`id_genero`))
+
   ENGINE = InnoDB;
 
 INSERT INTO `genero` (`nome_genero`) VALUES ('Auto-ajuda');

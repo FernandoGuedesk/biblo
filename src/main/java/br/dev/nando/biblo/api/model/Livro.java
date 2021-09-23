@@ -11,13 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity 
-@Table(name="livros")
-public class Livros {
+@Table(name="livro")
+public class Livro {
 	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idlivros")
+	@Column(name = "id_livro")
 	private Long idLivros;
 	@Column
 	private String titulo;
@@ -35,10 +37,10 @@ public class Livros {
 	private String isbn;
 	@Column(name="status_emprestimo")
 	private String statusEmprestimo;
-	@ManyToMany(mappedBy="livros", cascade = CascadeType.ALL)
-	private List<Genero> generos;
+	@JsonBackReference("livro")
+	@ManyToMany(mappedBy="livro", fetch = FetchType.EAGER)
+	private List<Genero> genero;
  	
-	
 	public long getIdLivros() {
 		return idLivros;
 	}
@@ -93,14 +95,12 @@ public class Livros {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-	public List<Genero> getGeneros() {
-		return generos;
+	public List<Genero> getGenero() {
+		return genero;
 	}
-	public void setGeneros(List<Genero> generos) {
-		this.generos = generos;
+	public void setGenero(List<Genero> genero) {
+		this.genero = genero;
 	}
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -116,7 +116,7 @@ public class Livros {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Livros other = (Livros) obj;
+		Livro other = (Livro) obj;
 		if (idLivros != other.idLivros)
 			return false;
 		return true;
