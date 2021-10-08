@@ -1,5 +1,7 @@
 package br.dev.nando.biblo.api.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,22 +15,25 @@ public class UsuarioService {
 	UsuarioRepository repositorio;
 	
 	public Usuario editarUsuario(Long idUsuario, Usuario usuarioModificado) {
-		//recupera um id existen
-		return repositorio.findById(idUsuario)
-				//atribui o valor modificado no usuario antigo.
-				.map(usuario -> {
-					usuario.setNome(usuarioModificado.getNome());
-					usuario.setTipo(usuarioModificado.getTelefone());
-					usuario.setTipo(usuarioModificado.getTipo());
-					usuario.setEmail(usuarioModificado.getEmail());
-					usuario.setEndereco(usuarioModificado.getEndereco());
-					//salva o usuario que recebeu a modificação.
-					return repositorio.save(usuario);
-				})
-				.orElseGet(() -> {
-					usuarioModificado.setIdUsuario(idUsuario);
-			        return repositorio.save(usuarioModificado);
-			      });
+		//recuperar o id do objeto que queremos atualizar.
+	    Optional<Usuario> usuarioOriginal = repositorio.findById(idUsuario);
+	    //comparar e atualizar.
+	   usuarioOriginal.get().setNome(usuarioModificado.getNome());
+	   usuarioOriginal.get().setTelefone(usuarioModificado.getTelefone());
+	   usuarioOriginal.get().setEmail(usuarioModificado.getEmail());
+	   usuarioOriginal.get().setTipo(usuarioModificado.getTipo());
+	   usuarioOriginal.get().setEndereco(usuarioModificado.getEndereco());
+	   
+	   Usuario novoUsuario = new Usuario();
+	   
+	   novoUsuario.setNome(usuarioOriginal.get().getNome());
+	   novoUsuario.setTipo(usuarioOriginal.get().getTipo());
+	   novoUsuario.setTelefone(usuarioOriginal.get().getTelefone());
+	   novoUsuario.setEmail(usuarioOriginal.get().getEmail());
+	   novoUsuario.setEndereco(usuarioOriginal.get().getEndereco());
+	   
+	   return repositorio.save(novoUsuario);
+		
 	}
 
 }

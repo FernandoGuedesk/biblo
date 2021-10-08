@@ -34,7 +34,7 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService service;
 	
-	@ApiOperation(value = "Lista todos os Usuários")
+	@ApiOperation(value = "Recupera todos os usuários")
 	@GetMapping
 	public List<Usuario> listar() {
 		
@@ -46,8 +46,7 @@ public class UsuarioController {
 	@GetMapping("/{idUsuario}")
 	public Optional<Usuario> listarUmUsuario(@PathVariable Long idUsuario) {
 		
-		Optional<Usuario> usuarioEncontrado = repositorio.findById(idUsuario);
-				return usuarioEncontrado;
+		return repositorio.findById(idUsuario);
 		
 	}
 	
@@ -70,6 +69,7 @@ public class UsuarioController {
 	
 	@ApiOperation(value = "Deleta um usuário especificado pelo seu id")
 	@DeleteMapping("/{idUsuario}")
+	@ResponseStatus(code = HttpStatus.OK)
 	  void deletarUsuario(@PathVariable Long idUsuario) {
 	     repositorio.deleteById(idUsuario);
 	  }
