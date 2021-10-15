@@ -26,6 +26,7 @@ public class UsuarioService {
 	   
 	   Usuario novoUsuario = new Usuario();
 	   
+	   novoUsuario.setIdUsuario(usuarioOriginal.get().getIdUsuario());
 	   novoUsuario.setNome(usuarioOriginal.get().getNome());
 	   novoUsuario.setTipo(usuarioOriginal.get().getTipo());
 	   novoUsuario.setTelefone(usuarioOriginal.get().getTelefone());
