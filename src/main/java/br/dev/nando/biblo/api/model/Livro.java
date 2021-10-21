@@ -41,7 +41,7 @@ public class Livro {
 	@ManyToMany(mappedBy="livro", fetch = FetchType.EAGER)
 	private List<Genero> genero;
  	
-	public long getIdLivros() {
+	public Long getIdLivros() {
 		return idLivros;
 	}
 	public void setIdLivros(Long idLivros) {
