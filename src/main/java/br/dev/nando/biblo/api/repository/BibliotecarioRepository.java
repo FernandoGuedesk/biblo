@@ -8,4 +8,5 @@ import br.dev.nando.biblo.api.model.Bibliotecario;
 @Repository
 public interface BibliotecarioRepository extends JpaRepository<Bibliotecario, Long>{
 
+
 }

@@ -23,10 +23,10 @@ public class Bibliotecario {
 	
 	
 	
-	public long getIdBibliotecario() {
+	public Long getIdBibliotecario() {
 		return idBibliotecario;
 	}
-	public void setIdBibliotecario(long idBibliotecario) {
+	public void setIdBibliotecario(Long idBibliotecario) {
 		this.idBibliotecario = idBibliotecario;
 	}
 	public String getStatus() {
