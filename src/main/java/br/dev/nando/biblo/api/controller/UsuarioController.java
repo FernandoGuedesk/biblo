@@ -33,12 +33,11 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService service;
 	
-	@ApiOperation(value = "Recupera todos os usuários")
+	@ApiOperation(value = "Listar todos os usuários")
 	@GetMapping
 	public List<Usuario> listar() {
 		
-		return repositorio.findAll();
-		
+		return repositorio.findAll();	
 	}
 	
 	@ApiOperation(value = "Buscar um Usuário específico")
@@ -53,16 +52,14 @@ public class UsuarioController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Usuario adicionar(@RequestBody Usuario usuario) throws Exception {
 		
-		return repositorio.save(usuario);
-		
+		return repositorio.save(usuario);	
 	}
 	
 	@ApiOperation(value = "Edita um usuário especificado pelo seu id")
 	@PutMapping("/{idUsuario}")
 	public Usuario editar(@PathVariable Long idUsuario, @RequestBody Usuario usuarioModificado) throws Exception {
 		
-		return service.editarUsuario(idUsuario, usuarioModificado);
-			
+		return service.editarUsuario(idUsuario, usuarioModificado);		
 	}
 	
 	@ApiOperation(value = "Deleta um usuário especificado pelo seu id")

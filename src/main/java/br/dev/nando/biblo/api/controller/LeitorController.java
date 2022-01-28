@@ -33,7 +33,7 @@ public class LeitorController {
 	@Autowired
 	LeitorService service;
 	
-	@ApiOperation(value = "Recupera todos os Leitores")
+	@ApiOperation(value = "Listar todos os Leitores")
 	@GetMapping
 	public List<Leitor> listar() {
 		return repositorio.findAll();

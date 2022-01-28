@@ -29,7 +29,7 @@ public class Historico {
 	private Long idLivro;
 	
 	
-	public long getIdHistorico() {
+	public Long getIdHistorico() {
 		return idHistorico;
 	}
 	public void setIdHistorico(long idHistorico) {
