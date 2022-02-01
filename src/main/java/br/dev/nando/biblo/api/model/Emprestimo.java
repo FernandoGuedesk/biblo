@@ -33,7 +33,7 @@ public class Emprestimo {
 	private Livro livro;
 	
 	
-	public long getIdEmprestimo() {
+	public Long getIdEmprestimo() {
 		return idEmprestimo;
 		
 	}
@@ -46,16 +46,16 @@ public class Emprestimo {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
-	public OffsetDateTime getDt_Emprestimo() {
+	public OffsetDateTime getDataEmprestimo() {
 		return dataEmprestimo;
 	}
-	public void setDt_Emprestimo(OffsetDateTime dataEmprestimo) {
+	public void setDataEmprestimo(OffsetDateTime dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
 	}
-	public OffsetDateTime getDt_Devolucao() {
+	public OffsetDateTime getDataDevolucao() {
 		return dataDevolucao;
 	}
-	public void setDt_Devolucao(OffsetDateTime dataDevolucao) {
+	public void setDataDevolucao(OffsetDateTime dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 	public Bibliotecario getBibliotecario() {
@@ -70,10 +70,10 @@ public class Emprestimo {
 	public void setLeitor(Leitor leitor) {
 		this.leitor = leitor;
 	}
-	public Livro getlivro() {
+	public Livro getLivro() {
 		return livro;
 	}
-	public void setlivro(Livro livro) {
+	public void setLivro(Livro livro) {
 		this.livro = livro;
 	}
 	@Override
