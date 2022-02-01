@@ -4,7 +4,6 @@ package br.dev.nando.biblo.api.model;
 import java.util.List;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
