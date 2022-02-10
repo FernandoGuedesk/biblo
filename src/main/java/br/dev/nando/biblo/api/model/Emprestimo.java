@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="emprestimo")
 public class Emprestimo {
@@ -21,8 +23,10 @@ public class Emprestimo {
 	private Long idEmprestimo;
 	@Column
 	private String situacao;
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
 	@Column(name = "dt_emprestimo")
 	private OffsetDateTime dataEmprestimo;
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
 	@Column(name = "dt_devolucao")
 	private OffsetDateTime dataDevolucao;
 	@ManyToOne

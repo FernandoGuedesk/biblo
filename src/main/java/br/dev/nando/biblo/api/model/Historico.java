@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="historico")
 public class Historico {
@@ -17,8 +19,10 @@ public class Historico {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_historico")
 	private Long idHistorico;
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
 	@Column(name = "dt_emprestimo")
 	private OffsetDateTime dataEmprestimo;
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
 	@Column(name = "dt_devolucao")
 	private OffsetDateTime dataDevolucao;
 	@Column(name = "id_leitor")
