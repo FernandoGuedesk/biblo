@@ -15,17 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.dev.nando.biblo.api.controller.openapi.UsuarioControllerOpenApi;
 import br.dev.nando.biblo.api.model.Usuario;
 import br.dev.nando.biblo.api.repository.UsuarioRepository;
 import br.dev.nando.biblo.api.service.UsuarioService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
 
 @RestController
 @RequestMapping("/usuarios")
-@Api(value = "Usuários")
-public class UsuarioController {
+public class UsuarioController implements UsuarioControllerOpenApi{
 	
 	@Autowired
 	UsuarioRepository repositorio;
@@ -33,39 +31,34 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService service;
 	
-	@ApiOperation(value = "Listar todos os usuários")
 	@GetMapping
 	public List<Usuario> listar() {
 		
 		return repositorio.findAll();	
 	}
 	
-	@ApiOperation(value = "Buscar um Usuário específico")
 	@GetMapping("/{idUsuario}")
 	public Optional<Usuario> listarUmUsuario(@PathVariable Long idUsuario) {
 		
 		return repositorio.findById(idUsuario);
 	}
 	
-	@ApiOperation(value = "Insere um usuário")
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Usuario adicionar(@RequestBody Usuario usuario) throws Exception {
+	public Usuario adicionar(@RequestBody Usuario usuario) {
 		
 		return repositorio.save(usuario);	
 	}
 	
-	@ApiOperation(value = "Edita um usuário especificado pelo seu id")
 	@PutMapping("/{idUsuario}")
-	public Usuario editar(@PathVariable Long idUsuario, @RequestBody Usuario usuarioModificado) throws Exception {
+	public Usuario editar(@PathVariable Long idUsuario, @RequestBody Usuario usuarioModificado) {
 		
 		return service.editarUsuario(idUsuario, usuarioModificado);		
 	}
 	
-	@ApiOperation(value = "Deleta um usuário especificado pelo seu id")
 	@DeleteMapping("/{idUsuario}")
 	@ResponseStatus(code = HttpStatus.OK)
-	  void deletarUsuario(@PathVariable Long idUsuario) {
+	public void deletarUsuario(@PathVariable Long idUsuario) {
 	     repositorio.deleteById(idUsuario);
 	  }
 	
