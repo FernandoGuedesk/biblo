@@ -15,16 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.dev.nando.biblo.api.controller.openapi.EmprestimoControllerOpenApi;
 import br.dev.nando.biblo.api.model.Emprestimo;
 import br.dev.nando.biblo.api.repository.EmprestimoRepository;
 import br.dev.nando.biblo.api.service.EmprestimoService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/emprestimos")
-@Api(value = "Emprestimos")
-public class EmprestimoController {
+public class EmprestimoController implements EmprestimoControllerOpenApi{
 
 	@Autowired
 	EmprestimoRepository repositorio;
@@ -32,38 +30,32 @@ public class EmprestimoController {
 	@Autowired
 	EmprestimoService service;
 	
-	@ApiOperation(value = "Lista todos os Emprestimos")
 	@GetMapping
 	public List<Emprestimo> listar() {
 		return repositorio.findAll();
 	}
 	
-	@ApiOperation(value = "Recupera um Emprestimo específico")
 	@GetMapping("/{idEmprestimo}")
 	public Optional<Emprestimo> listarUmEmprestimo(@PathVariable Long idEmprestimo) {
 		
 			return repositorio.findById(idEmprestimo);
 	}
 	
-	@ApiOperation(value = "Insere um emprestimo")
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Emprestimo adicionar(@RequestBody Emprestimo emprestimo) throws Exception {
+	public Emprestimo adicionar(@RequestBody Emprestimo emprestimo) {
 		
 		return repositorio.save(emprestimo);	
 	}
 	
-	@ApiOperation(value = "Edita um emprestimo especificado pelo seu id")
 	@PutMapping("/{idEmprestimo}")
-	public Emprestimo editar(@PathVariable Long idEmprestimo, @RequestBody Emprestimo emprestimoModificado) throws Exception {
-		
+	public Emprestimo editar(@PathVariable Long idEmprestimo, @RequestBody Emprestimo emprestimoModificado) {
 		return service.editarEmprestimo(idEmprestimo, emprestimoModificado);		
 	}
 	
-	@ApiOperation(value = "Deleta um emprestimo especificado pelo seu id")
 	@DeleteMapping("/{idEmprestimo}")
 	@ResponseStatus(code = HttpStatus.OK)
-	  void deletarEmprestimo(@PathVariable Long idEmprestimo) {
+	public void deletarEmprestimo(@PathVariable Long idEmprestimo) {
 	     repositorio.deleteById(idEmprestimo);
 	  }
 }

@@ -15,16 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.dev.nando.biblo.api.controller.openapi.GeneroControllerOpenApi;
 import br.dev.nando.biblo.api.model.Genero;
 import br.dev.nando.biblo.api.repository.GeneroRepository;
 import br.dev.nando.biblo.api.service.GeneroService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/generos")
-@Api(value = "Generos")
-public class GeneroController {
+public class GeneroController implements GeneroControllerOpenApi{
 	
 	@Autowired
 	GeneroRepository repositorio;
@@ -32,33 +30,31 @@ public class GeneroController {
 	@Autowired
 	GeneroService service;
 	
-	@ApiOperation(value = "Lista todos os Generos")
 	@GetMapping
 	public List<Genero> listar() {
 		return repositorio.findAll();
 	}
 	
-	@ApiOperation(value = "Recupera um Genero específico")
 	@GetMapping("/{idGenero}")
 	public Optional<Genero> listarUmGenero(@PathVariable Long idGenero) {
 		 return repositorio.findById(idGenero);
 	}
-	@ApiOperation(value = "Inserir um genero")
+	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.ACCEPTED)
-	public Genero adicionar(@RequestBody Genero genero) throws Exception {
+	public Genero adicionar(@RequestBody Genero genero) {
 		return repositorio.save(genero);
 	}
-	@ApiOperation(value = "Edita um genero especificado pelo seu id")
+	
 	@PutMapping("/{idGenero}")
-	public Genero editar(@PathVariable Long idGenero, @RequestBody Genero generoModificado) throws Exception {
+	public Genero editar(@PathVariable Long idGenero, @RequestBody Genero generoModificado) {
 		
 		return service.editarGenero(idGenero, generoModificado);
 	}
-	@ApiOperation(value = "Deleta um genero especificado pelo seu id")
+	
 	@DeleteMapping("/{idGenero}")
 	@ResponseStatus(code = HttpStatus.OK)
-	  void deletarGenero(@PathVariable Long idGenero) {
+	public void deletarGenero(@PathVariable Long idGenero) {
 	     repositorio.deleteById(idGenero);
 	  }
 }

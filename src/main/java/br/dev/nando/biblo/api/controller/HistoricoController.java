@@ -13,34 +13,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.dev.nando.biblo.api.controller.openapi.HistoricoControllerOpenApi;
 import br.dev.nando.biblo.api.model.Historico;
 import br.dev.nando.biblo.api.repository.HistoricoRepository;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/historicos")
-@Api(value = "Historicos")
-public class HistoricoController {
+public class HistoricoController implements HistoricoControllerOpenApi {
 	
 	@Autowired
 	HistoricoRepository repositorio;
 	
-	@ApiOperation(value = "Lista todos os Historicos")
 	@GetMapping
 	public List<Historico> listar() {
 		return repositorio.findAll();
 	}
 	
-	@ApiOperation(value = "Buscar um Historico específico")
 	@GetMapping("/{idHistorico}")
 	public Optional<Historico> listarUmHistorico(@PathVariable Long idHistorico) {
 		return  repositorio.findById(idHistorico);
 	}
-	@ApiOperation(value = "insere um historico")
+	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Historico adicionar(@RequestBody Historico historico) throws Exception {
+	public Historico adicionar(@RequestBody Historico historico) {
 		return repositorio.save(historico);
 	}
 
