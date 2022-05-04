@@ -7,25 +7,45 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name="usuario")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Usuario {
 	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
 	private Long idUsuario;
+	
+	@NotNull
+	@Size(min=3, max=60)
 	@Column
 	private String nome;
+	
+	@NotNull
+	@Size(min=3, max=60)
 	@Column
 	private String email;
+	
+	@NotNull
+	@Size(min=3, max=20)
 	@Column
 	private String tipo;
+	
+	@NotNull
+	@Size(min=8, max=13)
 	@Column
 	private String telefone;
 	
 	@Embedded
+	@Valid
     private Endereco endereco;
 
 	

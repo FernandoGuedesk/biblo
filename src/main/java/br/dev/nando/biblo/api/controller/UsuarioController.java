@@ -3,6 +3,8 @@ package br.dev.nando.biblo.api.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,7 +47,7 @@ public class UsuarioController implements UsuarioControllerOpenApi{
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Usuario adicionar(@RequestBody Usuario usuario) {
+	public Usuario adicionar(@Valid @RequestBody Usuario usuario) {
 		
 		return repositorio.save(usuario);	
 	}

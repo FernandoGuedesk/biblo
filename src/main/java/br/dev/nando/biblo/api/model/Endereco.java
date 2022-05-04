@@ -4,20 +4,37 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Embeddable @Access(AccessType.FIELD)
 public class Endereco {
 	
+	@NotNull
+	@Size(min=8, max=8)
 	@Column(name = "cep")
 	private String cep;
+	
+	@Size(min=0, max=80)
 	@Column(name = "logradouro")
 	private String logradouro;
+	
+	@NotNull
+	@Size(min=3, max=60)
 	@Column(name = "bairro")
 	private String bairro;
+	
+	@NotNull
+	@Size(min=3, max=60)
 	@Column(name = "cidade")
 	private String cidade;
+	
+	@NotNull
+	@Size(min=2, max=2)
 	@Column(name = "uf")
 	private String uf;
+	
+	@Size(min=0, max=45)
 	@Column(name = "complemento")
 	private String complemento;
 		
